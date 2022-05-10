@@ -1,2 +1,9 @@
-<h1>Tweets#index</h1>
-<p>Find me in app/views/tweets/index.html.erb</p>
+<h3 class="page-header">ツイート一覧</h3>
+<ul class="list-group">
+  <% @tweet.each do |tweet| %>
+  <li class="list-group-item">
+    <span class="badge text-danger"><%= link_to "[削除]",tweets_destroy_path,method: :delete %></span>
+    <%= tweet.body %>
+  </li>
+  <% end %>
+</ul>
