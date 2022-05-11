@@ -1,17 +1,21 @@
 class TweetsController < ApplicationController
   def index
-    @tweet = Tweet.all
+    @tweets = Tweet.all
+  end
+
+  def show
+    @tweet = Tweet.find(params[:id])
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @tweet = Tweet.new
   end
 
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
     @tweet.save
-    redirect_to user_tweets_path
+    redirect_to tweets_path
   end
 
   def destroy

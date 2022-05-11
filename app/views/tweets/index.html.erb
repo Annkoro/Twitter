@@ -1,9 +1,13 @@
 <h3 class="page-header">ツイート一覧</h3>
 <ul class="list-group">
-  <% @tweet.each do |tweet| %>
-  <li class="list-group-item">
-    <span class="badge text-danger"><%= link_to "[削除]",tweets_destroy_path,method: :delete %></span>
-    <%= tweet.body %>
-  </li>
+  <% @tweets.each do |tweet| %>
+  <div>
+    <%= link_to tweet_path(tweet.id) do %>
+      <div class="list-group-item">
+        <span class="badge text-danger"><%= link_to "[削除]",user_tweet_path,method: :delete %></span>
+        <%= tweet.body %>
+      </div>
+    <% end %>
+  </duv>
   <% end %>
 </ul>

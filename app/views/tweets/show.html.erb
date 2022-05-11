@@ -1,2 +1,6 @@
-<h1>Tweets#show</h1>
-<p>Find me in app/views/tweets/show.html.erb</p>
+<div>
+  <p>投稿者名：<%= @tweet.user.name %></p>
+  <p>内容：<%= @tweet.body %></p>
+  <p>画像：<%#= image_tag 'sample-author1.jpg' %>
+  <p>投稿日：<%= @tweet.created_at.strftime('%Y/%m/%d') %></p>
+</div>
