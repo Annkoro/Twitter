@@ -8,9 +8,10 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @user.tweets.create(tweet_params)
-    redirect_to tweets_index_path
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user.id
+    @tweet.save
+    redirect_to user_tweets_path
   end
 
   def destroy
@@ -23,6 +24,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:body)
+    params.require(:tweet).permit(:body, :image)
   end
 end
