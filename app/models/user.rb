@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :image
   has_many :tweets, dependent: :destroy
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  has_many :messages
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
